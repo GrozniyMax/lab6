@@ -1,7 +1,9 @@
 package CommonClasses.Interaction;
 
 import java.io.Serializable;
-import java.net.InetAddress;
 
-public record UserCommandRequest(InetAddress clientAddress) implements Serializable {
+/**
+ * Класс, представляющий запрос команд пользователем
+ */
+public record UserCommandRequest(Roles roles) implements Serializable {
 }

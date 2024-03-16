@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 
 /**
- * Класс для управления командами
+ * РљР»Р°СЃСЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РєРѕРјР°РЅРґР°РјРё
  */
 public class CommandManager {
     private InputManager inputManager;
@@ -22,16 +22,15 @@ public class CommandManager {
 
 
     /**
-     * Конструктор
-     * @param inputManager - менеджер ввода
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param inputManager - РјРµРЅРµРґР¶РµСЂ РІРІРѕРґР°
      */
     public CommandManager(InputManager inputManager, UDPManager connectionManager) {
         this.inputManager = inputManager;
         this.connectionManager = connectionManager;
 
         connectionManager.getCommands().stream().forEach((command)->commands.put(command.comandName(),command));
-        System.out.println("Зарегистрированы команды");
-        System.out.println(commands.keySet());
+
     }
     public CommandManager(){
 
@@ -42,9 +41,9 @@ public class CommandManager {
     }
 
     /**
-     * Обрабатывает команду
-     * @return true если нужно завершить работу
-     * @throws FunctionFailedException если функция завершилась с ошибкой
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РєРѕРјР°РЅРґСѓ
+     * @return true РµСЃР»Рё РЅСѓР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ СЂР°Р±РѕС‚Сѓ
+     * @throws FunctionFailedException РµСЃР»Рё С„СѓРЅРєС†РёСЏ Р·Р°РІРµСЂС€РёР»Р°СЃСЊ СЃ РѕС€РёР±РєРѕР№
      */
     public boolean handle() throws InvalidInputException  {
         try {
@@ -59,14 +58,14 @@ public class CommandManager {
                     break;
                 }
             }
-            if (currentCommand == null){
-                throw new InvalidInputException("Команда не распознана");
-            }
-            if (currentCommand.equals("execute_script")){
+            if (splitted[0].equals("execute_script")){
                 ScriptExecutor scriptExecutor = new ScriptExecutor(this);
                 scriptExecutor.execute(splitted[1]);
+                return false;
             }
-
+            if (currentCommand == null){
+                throw new InvalidInputException("РљРѕРјР°РЅРґР° РЅРµ СЂР°СЃРїРѕР·РЅР°РЅР°");
+            }
             UserRequest  userRequest = null;
             switch (currentCommand.userParams()){
                 case NONE -> userRequest = new UserRequest(currentCommand);
@@ -94,13 +93,13 @@ public class CommandManager {
             ServerResponse response = connectionManager.getServerResponce();
             print(response);
         } catch (IllegalArgumentException e) {
-            throw new InvalidInputException("Введен некорректный аргумент функции. "+e.getMessage());
+            throw new InvalidInputException("Р’РІРµРґРµРЅ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ Р°СЂРіСѓРјРµРЅС‚ С„СѓРЅРєС†РёРё. "+e.getMessage());
         } catch (EndOfStreamException e){
             return true;
         } catch (InvalidInputException e){
-            throw new InvalidInputException("Ошибка ввода. "+e.getMessage());
+            throw new InvalidInputException("РћС€РёР±РєР° РІРІРѕРґР°. "+e.getMessage());
         }catch (IndexOutOfBoundsException e){
-            throw  new InvalidInputException("Ошибка ввода. Не введен аргумент функции");
+            throw  new InvalidInputException("РћС€РёР±РєР° РІРІРѕРґР°. РќРµ РІРІРµРґРµРЅ Р°СЂРіСѓРјРµРЅС‚ С„СѓРЅРєС†РёРё");
         }
 
         return false;
@@ -108,10 +107,10 @@ public class CommandManager {
 
     private void print(ServerResponse response){
         if (response.status()){
-            System.out.println("Запрос успешно выполнен");
+            System.out.println("Р—Р°РїСЂРѕСЃ СѓСЃРїРµС€РЅРѕ РІС‹РїРѕР»РЅРµРЅ");
             if (response.output()!=null) response.output().stream().forEach(System.out::println);
         }else {
-            System.out.println("Ошибка в выполнении команды "+ response.exception().getMessage());
+            System.out.println("РћС€РёР±РєР° РІ РІС‹РїРѕР»РЅРµРЅРёРё РєРѕРјР°РЅРґС‹ "+ response.exception().getMessage());
         }
     }
 

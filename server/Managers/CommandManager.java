@@ -3,6 +3,7 @@ package Managers;
 import CollectionWrappers.CollectionManager;
 
 import Commands.*;
+import Commands.CommonComands.*;
 import Commands.Parametres.ParametresBundle;
 import CommonClasses.Commands.CommandDescription;
 import CommonClasses.Exceptions.FunctionFailedException;
@@ -18,74 +19,82 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- * Класс для управления командами
+ * РљР»Р°СЃСЃ, СѓРїСЂР°РІР»СЏСЋС‰РёР№ РєРѕРјР°РЅРґР°РјРё
  */
 public class CommandManager {
     CollectionManager collectionManager;
     static final Logger logger = Main.logger;
 
 
-    private Map<CommandDescription, Command> commands = new HashMap<>();
+    private Map<String, Command> commands = new HashMap<>();
 
     {
-        //Блок инициализации чтобы заполнить список команд
         register(new Add());
-//        register(new Clear());
-//        register(new CountGreaterThanFurish());
-//        register(new ExecuteScript());
+        register(new Clear());
+        register(new CountGreaterThanFurish());
+
         register(new Exit());
-//        register(new GroupCountingByCreationDate());
-//        register(new Help());
-//        register(new History());
-//        register(new Info());
-//        register(new RemoveAllByView());
-//        register(new RemoveById());
-//        register(new RemoveFirst());
-//        register(new RemoveLower());
-//        register(new Save());
+        register(new GroupCountingByCreationDate());
+        register(new Help());
+        register(new History());
+        register(new Info());
+        register(new RemoveAllByView());
+        register(new RemoveById());
+        register(new RemoveFirst());
+        register(new RemoveLower());
         register(new Show());
-//        register(new Update());
+        register(new Update());
     }
 
     /**
-     * Регистрирует команду
-     * @param newCommand - команда
+     * Р”РѕР±Р°РІР»СЏРµС‚ РєРѕРјР°РЅРґСѓ РІ СЃРїРёСЃРѕРє
+     * @param newCommand - РЅРѕРІР°СЏ РєРѕРјР°РЅРґР°
      */
     public void register(Command newCommand){
-        commands.put(newCommand.getCommandDescription(),newCommand);
+        commands.put(newCommand.getCommandDescription().comandName(),newCommand);
     }
 
 
     /**
-     * Конструктор
-     *
-     * @param collectionManager - менеджер коллекции
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param collectionManager - РјРµРЅРµРґР¶РµСЂ РєРѕР»Р»РµРєС†РёРё
      */
     public CommandManager(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
 
+    public CommandManager inheritate(){
+        return new CommandManager(collectionManager);
+    }
+
     /**
-     * Конструктор
-     * @param collectionManager - менеджер коллекции
-     * @param commands - список команд
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param collectionManager - РјРµРЅРµРґР¶РµСЂ РєРѕР»Р»РµРєС†РёРё
+     * @param commands - СЃРїРёСЃРѕРє РєРѕРјР°РЅРґ
      */
-    public CommandManager(CollectionManager collectionManager, Map<CommandDescription, Command> commands) {
+    public CommandManager(CollectionManager collectionManager, Map<String, Command> commands) {
         this.collectionManager = collectionManager;
         this.commands = commands;
     }
 
+
+    /**
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РєРѕРјР°РЅРґ
+     * @return СЃРїРёСЃРѕРє РєРѕРјР°РЅРґ
+     */
     public LinkedList<CommandDescription> getCommands(){
-        return new LinkedList<>(commands.keySet());
+
+        return commands.values().stream().map((command)->command.getCommandDescription()).collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**
-     * Обрабатывает команду
-     * @return true если нужно завершить работу
-     * @throws FunctionFailedException если функция завершилась с ошибкой
+     * Р’С‹РїРѕР»РЅСЏРµС‚ РєРѕРјР°РЅРґСѓ
+     * @param request - Р·Р°РїСЂРѕСЃ
+     * @return РѕС‚РІРµС‚
+     * @throws ExitCommandException
      */
     public ServerResponse handle(UserRequest request) throws ExitCommandException {
-        Command current = commands.get(request.command());
+        Command current = commands.get(request.command().comandName());
         ServerResponse response = new ServerResponse(true);
         try {
             logger.info("Started executing of command: "+
@@ -93,7 +102,7 @@ public class CommandManager {
             ParametresBundle arguments = null;
 
             switch (current.getRequiredParametres()) {
-                case СOMMANDS -> arguments = new ParametresBundle(commands.values());
+                case COMMANDS -> arguments = new ParametresBundle(commands.values());
                 case COLLECTION_MANAGER -> arguments = new ParametresBundle(collectionManager);
                 case COLLECTION_MANAGER_AND_USER -> arguments = new ParametresBundle(collectionManager, request.data());
                 case NONE -> arguments = new ParametresBundle();
@@ -108,5 +117,13 @@ public class CommandManager {
             response = new ServerResponse(e);
             return response;
         }
+    }
+
+    /**
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјРµРЅРµРґР¶РµСЂ РєРѕР»Р»РµРєС†РёРё
+     * @return РјРµРЅРµРґР¶РµСЂ РєРѕР»Р»РµРєС†РёРё
+     */
+    public CollectionManager getCollectionManager() {
+        return collectionManager;
     }
 }

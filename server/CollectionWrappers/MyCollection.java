@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 
 /**
- * Класс-обертка коллекции
+ * РљР»Р°СЃСЃ РєРѕР»Р»РµРєС†РёРё
  */
 public class MyCollection {
     private LinkedList<Flat> list;
@@ -15,9 +15,9 @@ public class MyCollection {
 
 
     /**
-     * Конструктор
-     * @param list - коллекция
-     * @param creationDate - дата создания
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param list - СЃРїРёСЃРѕРє
+     * @param creationDate - РґР°С‚Р° СЃРѕР·РґР°РЅРёСЏ
      */
     public MyCollection(LinkedList<Flat> list, ZonedDateTime creationDate) {
         this.list = list;
@@ -25,13 +25,17 @@ public class MyCollection {
     }
 
     /**
-     * Возвращает коллекцию
-     * @return коллекция
+     * РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЃРїРёСЃРєР°
+     * @return
      */
     public LinkedList<Flat> getList() {
         return list;
     }
 
+    /**
+     * РњРµС‚РѕРґ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЃРїРёСЃРєР°
+     * @param list - СЃРїРёСЃРѕРє
+     */
     public void setList(LinkedList<Flat> list) {
         this.list = list;
     }

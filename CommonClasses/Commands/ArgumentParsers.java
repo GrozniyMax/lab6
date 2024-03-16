@@ -3,12 +3,16 @@ package CommonClasses.Commands;
 import CommonClasses.Entities.Furnish;
 import CommonClasses.Entities.View;
 
+/**
+ * LEGACY CLASS
+ * NEVER USED NOW
+ */
 public class ArgumentParsers {
 
     public static Long parseID(String argument){
         try {
             Long result = Long.valueOf(argument.strip());
-            if (result<0) throw  new IllegalArgumentException("ID íå ìîæåò áûòü ìåíüøå 0");
+            if (result<0) throw  new IllegalArgumentException("ID Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¼ÐµÐ½ÑŒÑˆÐµ 0");
             return result;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("");
@@ -27,5 +31,4 @@ public class ArgumentParsers {
         return Furnish.valueOf(argument.strip().toUpperCase());
     }
 
-    //TODO add exception thowings
 }

@@ -3,43 +3,43 @@ package CommonClasses.Entities;
 import java.io.Serializable;
 
 /**
- * Класс для хранения объекта типа Coordinates
+ * РљР»Р°СЃСЃ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РѕР±СЉРµРєС‚Р° С‚РёРїР° Coordinates
  */
 public class Coordinates implements Serializable {
 
     /**
-     * Поле x - координата x
+     * РџРѕР»Рµ x - РєРѕРѕСЂРґРёРЅР°С‚Р° x
      */
-    private Integer x; //Максимальное значение поля: 606, Поле не может быть null
+    private Integer x; //РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ: 606, РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
     /**
-     * Поле y - координата y
+     * РџРѕР»Рµ y - РєРѕРѕСЂРґРёРЅР°С‚Р° y
      */
-    private Float y; //Поле не может быть null
+    private Float y; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
 
     public Coordinates() {
     }
     /**
-     * Устанавливает значение поля x
-     * @param x - значение поля x
-     * @throws IllegalArgumentException - если значение поля x некорректно
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ x
+     * @param x - Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ x
+     * @throws IllegalArgumentException - РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ x РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ
      */
     public void setX(Integer x) throws IllegalArgumentException {
-        if ((x==null)||(x>606)) throw new IllegalArgumentException("Некорректное значение Coordinates.x");
+        if ((x==null)||(x>606)) throw new IllegalArgumentException("РќРµРєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ Coordinates.x");
         this.x = x;
     }
     /**
-     * Устанавливает значение поля y
-     * @param y - значение поля y
-     * @throws IllegalArgumentException - если значение поля y некорректно
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ y
+     * @param y - Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ y
+     * @throws IllegalArgumentException - РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ y РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ
      */
     public void setY(Float y) throws IllegalArgumentException {
-        if (y==null) throw new IllegalArgumentException("Некорректное значение Coordinates.y");
+        if (y==null) throw new IllegalArgumentException("РќРµРєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ Coordinates.y");
         this.y = y;
     }
 
     /**
-     * Возвращает строковое представление объекта Coordinates
-     * @return строковое представление объекта Coordinates
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° Coordinates
+     * @return СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° Coordinates
      */
     @Override
     public String toString() {

@@ -11,25 +11,27 @@ import java.util.List;
 
 public interface Command extends Description {
     /**
-     * @return ��� �������
+     * Получить имя команды
+     * @return имя команды
      */
      String getName();
 
     /**
-     * @return �������� �������
+     * Получить описание команды
+     * @return описание команды
      */
      String getDescription();
 
      ServerParams getRequiredParametres();
 
     /**
-     * ���������� �������
-     *
-     * @param parametresBundle ����� ����������
-     * @param arguments
+     * Выполнить команду
+     * @param arguments - аргументы команды
+     * @return строки которые нужно вывести пользователю
+     * @throws FunctionFailedException если команда завершилась неудачей
+     * @throws ExitCommandException если команда завершилась выходом из программы
      */
      List<String> execute(ParametresBundle arguments) throws FunctionFailedException, ExitCommandException;
-
 
 
 }

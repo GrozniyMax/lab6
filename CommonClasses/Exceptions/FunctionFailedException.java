@@ -1,7 +1,7 @@
 package CommonClasses.Exceptions;
 
 /**
- * Исключение, выбрасываемое при некорректной работе функции
+ * РСЃРєР»СЋС‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РІРѕР·РЅРёРєР°РµС‚ РїСЂРё РїРѕРїС‹С‚РєРµ РІС‹РїРѕР»РЅРµРЅРёСЏ С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂР°СЏ Р·Р°РІРµСЂС€РёР»Р°СЃСЊ РЅРµСѓРґР°С‡РЅРѕ
  */
 public class FunctionFailedException extends Exception{
     public FunctionFailedException(String message) {

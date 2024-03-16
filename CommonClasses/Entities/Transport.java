@@ -3,7 +3,7 @@ package CommonClasses.Entities;
 import java.io.Serializable;
 
 /**
- * Перечисление для хранения объекта типа Transport
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Transport
  */
 public enum Transport implements Serializable {
     NONE,

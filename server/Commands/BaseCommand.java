@@ -1,28 +1,29 @@
 package Commands;
 
+import Commands.Command;
 import Commands.Parametres.Description;
+import Commands.Parametres.ParametresBundle;
 
 /**
- * Базовый класс команды
- * @author Максим Тараненко
+ * РљР»Р°cc СЂРµР°Р»РёР·СѓСЋС‰РёР№ Р±Р°Р·РѕРІСѓСЋ РєРѕРјР°РЅРґСѓ
  */
 public abstract class BaseCommand implements Command {
 
 
-
     /**
-     * Описание команды
+     * РћРїРёСЃР°РЅРёРµ РєРѕРјР°РЅРґС‹
      */
     protected final String description;
     /**
-     * Название команды
+     * РРјСЏ РєРѕРјР°РЅРґС‹
      */
     protected final String name;
 
 
     /**
-     * @param name
-     * @param description
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param name - РёРјСЏ
+     * @param description - РѕРїРёСЃР°РЅРёРµ
      */
     protected BaseCommand(String name, String description) {
         this.name = name;
@@ -30,19 +31,26 @@ public abstract class BaseCommand implements Command {
     }
 
     /**
-     * Получить описание команды
-     * @return - описание команды
+     * РџРѕР»СѓС‡РёС‚СЊ РѕРїРёСЃР°РЅРёРµ РєРѕРјР°РЅРґС‹
+     * @return - РѕРїРёСЃР°РЅРёРµ РєРѕРјР°РЅРґС‹
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Получить название команды
-     * @return - название команды
+     * РџРѕР»СѓС‡РёС‚СЊ РёРјСЏ РєРѕРјР°РЅРґС‹
+     * @return - РёРјСЏ РєРѕРјР°РЅРґС‹
      */
     public String getName() {
         return name;
     }
 
+    /**
+     * РџРѕР»СѓС‡РёС‚СЊ Р°СЂРіСѓРјРµРЅС‚ РІ РЅРµРѕР±С…РѕРґРёРјРѕРј С‚РёРїРµ
+     * @return - РѕРїРёСЃР°РЅРёРµ РєРѕРјР°РЅРґС‹
+     */
+    public static <T> T getTypedFunctionArgument(ParametresBundle parametresBundle){
+        return (T) parametresBundle.data().fuctionArgument();
+    }
 }

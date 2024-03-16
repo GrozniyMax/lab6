@@ -4,6 +4,9 @@ import CommonClasses.Entities.Flat;
 
 import java.io.Serializable;
 
+/**
+ * Класс для хранения данных пользователя
+ */
 public record UserData(Object fuctionArgument, Flat readObject) implements Serializable {
     public UserData(String fuctionArgument) {
         this(fuctionArgument, null);

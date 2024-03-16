@@ -3,7 +3,7 @@ package CommonClasses.Entities;
 import java.io.Serializable;
 
 /**
- * Перечисление для хранения объекта типа Furnish
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Furnish
  */
 public enum Furnish implements Comparable<Furnish>, Serializable {
     DESIGNER,

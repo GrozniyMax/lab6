@@ -6,6 +6,7 @@ import CommonClasses.Entities.Flat;
 import Managers.CommandManager;
 import Managers.ConnectionManger;
 import Managers.JsonManager;
+import Net.MultiClientConnectionManager;
 
 import java.io.FileNotFoundException;
 import java.nio.file.FileSystems;
@@ -19,8 +20,7 @@ public class Main {
 
     public static Logger logger = Logger.getLogger("ServerLogger");
     /**
-     * Точка входа в программу
-     * @param args - аргументы командной строки
+     * @param args
      */
     public static void main(String[] args) {
         System.setErr(System.out);
@@ -34,7 +34,7 @@ public class Main {
             fileName = "dumping.json";
         }
 
-        //Приводим путь к абсолютному виду
+
         fileName = FileSystems.getDefault().getPath(fileName).normalize().toAbsolutePath().toString();
         JsonManager.setFilePath(fileName);
         MyCollection collection=new MyCollection(new LinkedList<>(), ZonedDateTime.now());
@@ -47,7 +47,7 @@ public class Main {
             logger.warning("Unable to read json-file");
         }
         finally {
-            ConnectionManger manger = new ConnectionManger(new CommandManager(new CollectionManager(collection)));
+            MultiClientConnectionManager manger = new MultiClientConnectionManager(new CommandManager(new CollectionManager(collection)));
             manger.run();
             MyCollection finalCollection = collection;
             Runtime.getRuntime().addShutdownHook(new Thread(

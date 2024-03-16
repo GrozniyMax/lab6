@@ -1,10 +1,10 @@
 package Commands.Parametres;
 
 /**
- * Перечисление, содержащее все необходимые варианты требуемых параметров
+ * РџР°СЂР°РјРµС‚СЂС‹ РєРѕС‚РѕСЂС‹Рµ РїРµСЂРµРґР°РµС‚ СЃРµСЂРІРµСЂ
  */
 public enum ServerParams {
-    СOMMANDS,
+    COMMANDS,
     COLLECTION_MANAGER_AND_USER,
     NONE,
     COLLECTION_MANAGER;

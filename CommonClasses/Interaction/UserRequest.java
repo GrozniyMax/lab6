@@ -5,6 +5,9 @@ import CommonClasses.Commands.UserData;
 
 import java.io.Serializable;
 
+/**
+ * Класс, представляющий запрос пользователя
+ */
 public record UserRequest(CommandDescription command, UserData data) implements Serializable {
     public UserRequest(CommandDescription command, UserData data) {
         this.command = command;

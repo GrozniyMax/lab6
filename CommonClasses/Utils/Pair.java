@@ -1,33 +1,33 @@
 package CommonClasses.Utils;
 
 /**
- * Класс для хранения объекта типа Pair
- * @param <K> - тип ключа
- * @param <V> - тип значения
+ * пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Pair
+ * @param <K> - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+ * @param <V> - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  */
 public class Pair <K,V>{
     private final K key;
     private final V value;
 
     /**
-     * Конструктор
-     * @param key - ключ
-     * @param value - значение
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+     * @param key - пїЅпїЅпїЅпїЅ
+     * @param value - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
      */
     public Pair(K key, V value){
         this.key = key;
         this.value = value;
     }
     /**
-     * Возвращает ключ
-     * @return ключ
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+     * @return пїЅпїЅпїЅпїЅ
      */
     public K getKey() {
         return key;
     }
     /**
-     * Возвращает значение
-     * @return значение
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+     * @return пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
      */
     public V getValue() {
         return value;

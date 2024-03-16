@@ -4,13 +4,13 @@ import CommonClasses.Entities.*;
 
 
 /**
- * Интерфейс для управления вводом
+ * РРЅС‚РµСЂС„РµР№СЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РІРІРѕРґРѕРј
  */
 public interface InputManager {
 
     /**
-     * Читает строку из консоли
-     * @return строка
+     * Р§РёС‚Р°РµС‚ СЃС‚СЂРѕРєСѓ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return СЃС‚СЂРѕРєР°
      */
     String readLine();
 
@@ -20,40 +20,40 @@ public interface InputManager {
     }
 
     /**
-     * Читает координаты из консоли
-     * @return координаты
+     * Р§РёС‚Р°РµС‚ РєРѕРѕСЂРґРёРЅР°С‚С‹ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РєРѕРѕСЂРґРёРЅР°С‚С‹
      */
     Coordinates readCoordinates();
 
 
     /**
-     * Читает Furnish из консоли
-     * @return прочитанный Furnish
+     * Р§РёС‚Р°РµС‚ Furnish РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ Furnish
      */
     Furnish readFurnish();
 
     /**
-     * Читает View из консоли
-     * @return прочитанный View
+     * Р§РёС‚Р°РµС‚ View РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ View
      */
      View readView();
 
     /**
-     * Читает Transport из консоли
-     * @return прочитанный Transport
+     * Р§РёС‚Р°РµС‚ Transport РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ Transport
      */
 
      Transport readTransport();
 
     /**
-     * Читает House из консоли
-     * @return прочитанный House
+     * Р§РёС‚Р°РµС‚ House РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ House
      */
     House readHouse();
 
     /**
-     * Читает Flat из консоли
-     * @return прочитанный Flat
+     * Р§РёС‚Р°РµС‚ Flat РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ Flat
      */
      Flat readFlat();
 

@@ -3,7 +3,7 @@ package CommonClasses.Entities;
 import java.io.Serializable;
 
 /**
- * Перечисление для хранения объекта типа View
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ View
  */
 public enum View implements Serializable {
     STREET,

@@ -3,20 +3,29 @@ package CommonClasses.Utils;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Класс, представляющий менеджер идентификаторов
+ */
 public class IDManager {
-    //TODO add usage of ID manager to commands
-    public static Long lastId = 0L;
+    public  Long lastId = 0L;
+    private  Queue<Long> freeIDs = new LinkedList<>();
 
-    private static Queue<Long> freeIDs = new LinkedList<>();
-
-    public static Long getID(){
+    /**
+     * Метод для получения нового идентификатора
+     * @return - новый идентификатор
+     */
+    public  Long getID(){
         if (freeIDs.isEmpty()){
             return lastId++;
         }
         return freeIDs.poll();
     }
 
-    public static void addFreeID(Long ID){
+    /**
+     * Метод для освобождения идентификатора
+     * @param ID - идентификатор, который нужно освободить
+     */
+    public  void addFreeID(Long ID){
         freeIDs.add(ID);
     }
 }

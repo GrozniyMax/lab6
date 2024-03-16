@@ -1,16 +1,32 @@
 package CommonClasses.Commands;
 
+import CommonClasses.ArgumentParsers.AbstractArgumentParser;
+
 import java.io.Serializable;
 import java.util.function.Function;
 
-public record CommandDescription (String comandName, UserParams userParams, Function<String,? extends Object> argumentParseFunction) implements Serializable {
+/**
+ * Класс описывающий команду
+ */
+public record CommandDescription (String comandName, UserParams userParams, AbstractArgumentParser argumentParseFunction) implements Serializable {
 
-    public CommandDescription(String comandName, UserParams userParams, Function<String,? extends Object> argumentParseFunction) {
+    /**
+     * Конструктор для создания описания команды
+     * @param comandName имя команды
+     * @param userParams параметры команды
+     * @param argumentParseFunction функция парсинга аргументов
+     */
+    public CommandDescription(String comandName, UserParams userParams, AbstractArgumentParser argumentParseFunction) {
         this.comandName = comandName;
         this.userParams = userParams;
         this.argumentParseFunction = argumentParseFunction;
     }
 
+    /**
+     * Конструктор для создания описания команды
+     * @param comandName имя команды
+     * @param userParams параметры команды
+     */
     public CommandDescription(String comandName, UserParams userParams) {
         this(comandName, userParams, null);
     }

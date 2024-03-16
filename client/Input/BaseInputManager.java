@@ -6,15 +6,15 @@ import CommonClasses.Exceptions.*;
 import java.io.*;
 
 /**
- * Базовый класс для управления вводом/выводом
+ * Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РІРІРѕРґРѕРј/РІС‹РІРѕРґРѕРј
  */
 public abstract class BaseInputManager {
 
     protected BufferedReader reader;
 
     /**
-     * Конструктор
-     * @param readFrom - поток ввода
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param readFrom - РїРѕС‚РѕРє РІРІРѕРґР°
      */
     protected BaseInputManager(InputStream readFrom) {
         this.reader = new BufferedReader(new InputStreamReader(readFrom));
@@ -22,9 +22,9 @@ public abstract class BaseInputManager {
 
 
     /**
-     * Читает строку из консоли
-     * @return строка
-     * @throws EndOfStreamException если конец потока
+     * Р§РёС‚Р°РµС‚ СЃС‚СЂРѕРєСѓ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return СЃС‚СЂРѕРєР°
+     * @throws EndOfStreamException РµСЃР»Рё РєРѕРЅРµС† РїРѕС‚РѕРєР°
      */
     public String readLine() throws EndOfStreamException{
         try {
@@ -32,14 +32,14 @@ public abstract class BaseInputManager {
             if (line==null) throw new EndOfStreamException();
             return line;
         } catch (IOException e) {
-            throw new RuntimeException("Ошибка чтения вводимых данных, это критическая ошибка");
+            throw new RuntimeException("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ РІРІРѕРґРёРјС‹С… РґР°РЅРЅС‹С…, СЌС‚Рѕ РєСЂРёС‚РёС‡РµСЃРєР°СЏ РѕС€РёР±РєР°");
         }
     }
     /**
-     * Читает строку из консоли добавляя префикс
-     * @param prefix префикс
-     * @return строка
-     * @throws EndOfStreamException если конец потока
+     * Р§РёС‚Р°РµС‚ СЃС‚СЂРѕРєСѓ РёР· РєРѕРЅСЃРѕР»Рё РґРѕР±Р°РІР»СЏСЏ РїСЂРµС„РёРєСЃ
+     * @param prefix РїСЂРµС„РёРєСЃ
+     * @return СЃС‚СЂРѕРєР°
+     * @throws EndOfStreamException РµСЃР»Рё РєРѕРЅРµС† РїРѕС‚РѕРєР°
      */
     public String readLine(String prefix) throws EndOfStreamException {
         System.out.print(prefix);
@@ -47,22 +47,22 @@ public abstract class BaseInputManager {
     }
 
     /**
-     * Читает целое число из консоли
-     * @return Integer - прочтенное число
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ С†РµР»РѕРµ С‡РёСЃР»Рѕ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Integer - РїСЂРѕС‡С‚РµРЅРЅРѕРµ С‡РёСЃР»Рѕ
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Integer readInt() throws InvalidInputException {
         try {
             return Integer.parseInt(this.readLine().strip());
         } catch (NumberFormatException e) {
-            throw new InvalidInputException("Некорректный ввод целого числа формата Integer");
+            throw new InvalidInputException("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ С†РµР»РѕРіРѕ С‡РёСЃР»Р° С„РѕСЂРјР°С‚Р° Integer");
         }
     }
     /**
-     * Читает целое число из консоли добавляя префикс
-     * @param prefix - префикс
-     * @return Integer - прочтенное число
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ С†РµР»РѕРµ С‡РёСЃР»Рѕ РёР· РєРѕРЅСЃРѕР»Рё РґРѕР±Р°РІР»СЏСЏ РїСЂРµС„РёРєСЃ
+     * @param prefix - РїСЂРµС„РёРєСЃ
+     * @return Integer - РїСЂРѕС‡С‚РµРЅРЅРѕРµ С‡РёСЃР»Рѕ
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Integer readInt(String prefix) throws InvalidInputException {
         System.out.print(prefix);
@@ -70,44 +70,44 @@ public abstract class BaseInputManager {
     }
 
     /**
-     * Читает длинное число из консоли
-     * @return Long - прочтенное число
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ РґР»РёРЅРЅРѕРµ С‡РёСЃР»Рѕ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Long - РїСЂРѕС‡С‚РµРЅРЅРѕРµ С‡РёСЃР»Рѕ
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Long readLong() throws InvalidInputException {
         try {
             return Long.parseLong(this.readLine().strip());
         } catch (NumberFormatException e) {
-            throw new InvalidInputException("Неккорректно введено число формата Long");
+            throw new InvalidInputException("РќРµРєРєРѕСЂСЂРµРєС‚РЅРѕ РІРІРµРґРµРЅРѕ С‡РёСЃР»Рѕ С„РѕСЂРјР°С‚Р° Long");
         }
     }
     /**
-     * Читает длинное число из консоли добавляя префикс
-     * @param prefix - префикс
-     * @return Long - прочтенное число
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ РґР»РёРЅРЅРѕРµ С‡РёСЃР»Рѕ РёР· РєРѕРЅСЃРѕР»Рё РґРѕР±Р°РІР»СЏСЏ РїСЂРµС„РёРєСЃ
+     * @param prefix - РїСЂРµС„РёРєСЃ
+     * @return Long - РїСЂРѕС‡С‚РµРЅРЅРѕРµ С‡РёСЃР»Рѕ
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Long readLong(String prefix) throws InvalidInputException {
         System.out.print(prefix);
         return this.readLong();
     }
     /**
-     * Читает дробное число из консоли
-     * @return Float - прочтенное число
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ РґСЂРѕР±РЅРѕРµ С‡РёСЃР»Рѕ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Float - РїСЂРѕС‡С‚РµРЅРЅРѕРµ С‡РёСЃР»Рѕ
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Float readFloat() throws InvalidInputException {
         try {
             return Float.parseFloat(this.readLine().strip());
         } catch (NumberFormatException e) {
-            throw new InvalidInputException("Неккорректно введено число формата Float");
+            throw new InvalidInputException("РќРµРєРєРѕСЂСЂРµРєС‚РЅРѕ РІРІРµРґРµРЅРѕ С‡РёСЃР»Рѕ С„РѕСЂРјР°С‚Р° Float");
         }
     }
     /**
-     * Читает дробное число из консоли добавляя префикс
-     * @param prefix - префикс
-     * @return Float - прочтенное число
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ РґСЂРѕР±РЅРѕРµ С‡РёСЃР»Рѕ РёР· РєРѕРЅСЃРѕР»Рё РґРѕР±Р°РІР»СЏСЏ РїСЂРµС„РёРєСЃ
+     * @param prefix - РїСЂРµС„РёРєСЃ
+     * @return Float - РїСЂРѕС‡С‚РµРЅРЅРѕРµ С‡РёСЃР»Рѕ
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Float readFloat(String prefix) throws InvalidInputException {
         System.out.print(prefix);

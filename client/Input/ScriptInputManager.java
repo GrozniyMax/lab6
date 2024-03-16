@@ -7,14 +7,14 @@ import CommonClasses.Exceptions.InvalidInputException;
 import java.io.InputStream;
 
 /**
- * Класс для управления вводом из скрипта
- * Реализует интерфейс InputManager
+ * РљР»Р°СЃСЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РІРІРѕРґРѕРј РёР· СЃРєСЂРёРїС‚Р°
+ * Р РµР°Р»РёР·СѓРµС‚ РёРЅС‚РµСЂС„РµР№СЃ InputManager
  */
 public class ScriptInputManager extends BaseInputManager implements InputManager{
 
     /**
-     * Конструктор
-     * @param readFrom - поток ввода
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param readFrom - РїРѕС‚РѕРє РІРІРѕРґР°
      */
     public ScriptInputManager(InputStream readFrom) {
         super(readFrom);
@@ -22,14 +22,14 @@ public class ScriptInputManager extends BaseInputManager implements InputManager
 
 
     /**
-     * Читает координаты из консоли
-     * @return Coordinates - прочтенные координаты
-     * @throws EndOfStreamException если конец потока
+     * Р§РёС‚Р°РµС‚ РєРѕРѕСЂРґРёРЅР°С‚С‹ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Coordinates - РїСЂРѕС‡С‚РµРЅРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹
+     * @throws EndOfStreamException РµСЃР»Рё РєРѕРЅРµС† РїРѕС‚РѕРєР°
      */
     public Coordinates readCoordinates() throws InvalidInputException{
         try {
             String[] values = this.readLine().strip().split(" +");
-            if (!(values.length ==2)) throw new IllegalArgumentException(" Необходимо вводить ровно 2 коодинаты");
+            if (!(values.length ==2)) throw new IllegalArgumentException(" РќРµРѕР±С…РѕРґРёРјРѕ РІРІРѕРґРёС‚СЊ СЂРѕРІРЅРѕ 2 РєРѕРѕРґРёРЅР°С‚С‹");
             Coordinates coordinates = new Coordinates();
             coordinates.setX(Integer.parseInt(values[0]));
             coordinates.setY(Float.parseFloat(values[1]));
@@ -40,9 +40,9 @@ public class ScriptInputManager extends BaseInputManager implements InputManager
     }
 
     /**
-     * Читает Furnish из консоли
-     * @return Furnish - прочтенный Furnish
-     * @throws EndOfStreamException если конец потока
+     * Р§РёС‚Р°РµС‚ Furnish РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Furnish - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ Furnish
+     * @throws EndOfStreamException РµСЃР»Рё РєРѕРЅРµС† РїРѕС‚РѕРєР°
      */
     public Furnish readFurnish() throws InvalidInputException{
         try {
@@ -54,9 +54,9 @@ public class ScriptInputManager extends BaseInputManager implements InputManager
 
 
     /**
-     * Читает View из консоли
-     * @return View - прочтенный View
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ View РёР· РєРѕРЅСЃРѕР»Рё
+     * @return View - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ View
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public View readView() throws InvalidInputException{
         try {
@@ -67,9 +67,9 @@ public class ScriptInputManager extends BaseInputManager implements InputManager
     }
 
     /**
-     * Читает House из консоли
-     * @return House - прочтенный House
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ House РёР· РєРѕРЅСЃРѕР»Рё
+     * @return House - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ House
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public House readHouse()throws InvalidInputException{
         try {
@@ -84,9 +84,9 @@ public class ScriptInputManager extends BaseInputManager implements InputManager
     }
 
     /**
-     * Читает Transport из консоли
-     * @return прочитанный Transport
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ Transport РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ Transport
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Transport readTransport() throws InvalidInputException{
         try {
@@ -97,9 +97,9 @@ public class ScriptInputManager extends BaseInputManager implements InputManager
     }
 
     /**
-     * Читает Flat из консоли
-     * @return прочитанный Flat
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ Flat РёР· РєРѕРЅСЃРѕР»Рё
+     * @return РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ Flat
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Flat readFlat() throws InvalidInputException{
         try {
@@ -116,7 +116,7 @@ public class ScriptInputManager extends BaseInputManager implements InputManager
         } catch (IllegalArgumentException e) {
             throw new InvalidInputException(e.getMessage());
         } catch (EndOfStreamException e){
-            throw new InvalidInputException("Ввод неокончен");
+            throw new InvalidInputException("Р’РІРѕРґ РЅРµРѕРєРѕРЅС‡РµРЅ");
         }
     }
 

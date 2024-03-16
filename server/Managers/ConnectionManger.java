@@ -13,14 +13,25 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.util.Set;
 import java.util.logging.Logger;
 
+/**
+ * Class created for handling user connection.
+ * <p>Is legacy now</p>
+ * @see Net.MultiClientConnectionManager # for actual connection handling
+ */
 public class ConnectionManger {
     static final Logger logger = Main.logger;
 
     //TODO ADD LOGGING
     //TODO ADD chuncks
     //TODO TEST
+
+    private Selector selector;
     private CommandManager commandManager;
     private DatagramChannel channel;
     private SocketAddress currentClientAddress;
@@ -34,11 +45,14 @@ public class ConnectionManger {
             this.commandManager = commandManager;
             InetSocketAddress s = new InetSocketAddress(InetAddress.getLocalHost(),8080);
             this.channel = DatagramChannel.open().bind(s);
-            this.channel.configureBlocking(true);
+            this.selector = Selector.open();
+            this.channel.configureBlocking(false);
+            this.channel.register(selector,SelectionKey.OP_ACCEPT);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 
     private void waitForConnection() {
@@ -122,6 +136,9 @@ public class ConnectionManger {
     private void closeConnection(){
         try {
             this.channel.disconnect();
+            this.channel.close();
+            InetSocketAddress s = new InetSocketAddress(InetAddress.getLocalHost(),8080);
+            this.channel = DatagramChannel.open().bind(s);
             logger.info("Closed connection");
         } catch (IOException e) {
             throw new RuntimeException(e);

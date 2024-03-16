@@ -7,10 +7,9 @@ import CommonClasses.Commands.UserData;
 import java.util.Collection;
 
 /**
- * Класс, хранящий в себе все параметры, необходимые для выполнения команды
+ * РљР»Р°СЃСЃ РґР»СЏ РїРµСЂРµРґР°С‡Рё РїР°СЂР°РјРµС‚СЂРѕРІ РІ РєРѕРјР°РЅРґС‹
  */
 public record ParametresBundle(CollectionManager collectionManager, UserData data,Collection<Command> commands) {
-    //TODO решить в каком формате передаются аргументы пользователя
 
     public ParametresBundle(Collection<Command> commands) {
         this(null, null, commands);
@@ -27,4 +26,5 @@ public record ParametresBundle(CollectionManager collectionManager, UserData dat
     public ParametresBundle() {
         this(null,null,null);
     }
+
 }

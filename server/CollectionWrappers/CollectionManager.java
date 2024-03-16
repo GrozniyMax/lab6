@@ -7,26 +7,26 @@ import java.util.List;
 
 
 /**
- * Класс, управляющий коллекцией
+ * РљР»Р°СЃСЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РєРѕР»Р»РµРєС†РёРµР№
+ * РѕС‚РІРµС‡Р°РµС‚ Р·Р° РёСЃС‚РѕСЂРёСЋ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ РєРѕР»Р»РµРєС†РёРµР№
  */
 public class CollectionManager {
-
 
     MyCollection collection;
     private final String[] history = new String[5];
     private int historyIndex = 0;
 
     /**
-     * Конструктор
-     * @param collection - коллекция
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+     * @param collection - РєРѕР»Р»РµРєС†РёСЏ
      */
     public CollectionManager(MyCollection collection) {
         this.collection = collection;
     }
 
     /**
-     * Возвращает историю команд
-     * @return история команд
+     * РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РёСЃС‚РѕСЂРёРё
+     * @return
      */
     public List<String> getHistory() {
         List<String> copy = new ArrayList<>();
@@ -38,8 +38,8 @@ public class CollectionManager {
         return copy;
     }
     /**
-     * Добавляет команду в историю
-     * @param command - имя команды
+     * РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РєРѕРјР°РЅРґС‹ РІ РёСЃС‚РѕСЂРёСЋ
+     * @param command - РєРѕРјР°РЅРґР°
      */
     public void addHistory(String command){
         history[historyIndex] = command;
@@ -48,8 +48,8 @@ public class CollectionManager {
 
 
     /**
-     * Возвращает класс-обертку коллекции
-     * @return коллекция
+     * РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»Р»РµРєС†РёРё
+     * @return
      */
     public MyCollection getCollection() {
         return collection;
@@ -57,7 +57,8 @@ public class CollectionManager {
 
 
     /**
-     * @return коллекция без класса-обертки
+     * РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЃРїРёСЃРєР° СЌР»РµРјРµРЅС‚РѕРІ РєРѕР»Р»РµРєС†РёРё
+     * @return
      */
     public List<Flat> getList(){
         return this.collection.getList();

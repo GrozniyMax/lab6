@@ -7,22 +7,22 @@ import CommonClasses.Entities.*;
 import CommonClasses.Exceptions.InvalidInputException;
 
 /**
- * Класс для управления вводом из консоли
- * Реализует интерфейс InputManager
+ * РљР»Р°СЃСЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РІРІРѕРґРѕРј РёР· РєРѕРЅСЃРѕР»Рё
+ * Р РµР°Р»РёР·СѓРµС‚ РёРЅС‚РµСЂС„РµР№СЃ InputManager
  */
 public class ConsoleInputManager extends BaseInputManager implements InputManager {
 
     private static ConsoleInputManager instance;
 
     /**
-     * Конструктор
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
      */
     private ConsoleInputManager() {
         super(System.in);
     }
 
     /**
-     * Получить экземпляр класса
+     * РџРѕР»СѓС‡РёС‚СЊ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°
      * @return ConsoleInputManager
      */
     public static ConsoleInputManager getInstance(){
@@ -33,16 +33,16 @@ public class ConsoleInputManager extends BaseInputManager implements InputManage
     }
 
     /**
-     * Читает координаты из консоли
-     * @return Coordinates - прочтенные координаты
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ РєРѕРѕСЂРґРёРЅР°С‚С‹ РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Coordinates - РїСЂРѕС‡С‚РµРЅРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Coordinates readCoordinates() throws InvalidInputException{
         try {
-            System.out.print("Введите Координаты в формате x y : ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РљРѕРѕСЂРґРёРЅР°С‚С‹ РІ С„РѕСЂРјР°С‚Рµ x y : ");
 
             String[] values = this.readLine().strip().split(" +");
-            if (!(values.length ==2)) throw new IllegalArgumentException(" Необходимо вводить ровно 2 коодинаты");
+            if (!(values.length ==2)) throw new IllegalArgumentException(" РќРµРѕР±С…РѕРґРёРјРѕ РІРІРѕРґРёС‚СЊ СЂРѕРІРЅРѕ 2 РєРѕРѕРґРёРЅР°С‚С‹");
             Coordinates coordinates = new Coordinates();
             coordinates.setX(Integer.parseInt(values[0]));
             coordinates.setY(Float.parseFloat(values[1]));
@@ -53,57 +53,57 @@ public class ConsoleInputManager extends BaseInputManager implements InputManage
     }
 
     /**
-     * Читает Furnish из консоли
-     * @return Furnish - прочтенный Furnish
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ Furnish РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Furnish - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ Furnish
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Furnish readFurnish() throws InvalidInputException{
         try {
-            System.out.print("Введите Furish (DESIGNER, NONE, LITTLE): ");
+            System.out.print("Р’РІРµРґРёС‚Рµ Furish (DESIGNER, NONE, LITTLE): ");
             return Furnish.valueOf(this.readLine().strip().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidInputException("Не получилось распознать enum");
+            throw new InvalidInputException("РќРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ СЂР°СЃРїРѕР·РЅР°С‚СЊ enum");
         }
     }
 
     /**
-     * Читает View из консоли
-     * @return View - прочтенный View
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ View РёР· РєРѕРЅСЃРѕР»Рё
+     * @return View - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ View
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public View readView()throws InvalidInputException{
         try {
-            System.out.print("Введите View (STREET, YARD, PARK, BAD, GOOD): ");
+            System.out.print("Р’РІРµРґРёС‚Рµ View (STREET, YARD, PARK, BAD, GOOD): ");
             return View.valueOf(this.readLine().strip().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidInputException("Не получилось распознать enum");
+            throw new InvalidInputException("РќРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ СЂР°СЃРїРѕР·РЅР°С‚СЊ enum");
         }
     }
 
 
     /**
-     * Читает House из консоли в громком режиме
-     * @return House - прочтенный House
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ House РёР· РєРѕРЅСЃРѕР»Рё РІ РіСЂРѕРјРєРѕРј СЂРµР¶РёРјРµ
+     * @return House - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ House
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public House readHouse(){
         House object = new House();
-        this.doUntillCorrect(()->object.setName(this.readLine("Введите Имя дома: ")),
-                ()->object.setYear(this.readInt("Введите год постройки: ")),
-                ()->object.setNumberOfFloors(this.readInt("Введите количество этажей дома: "))
+        this.doUntillCorrect(()->object.setName(this.readLine("Р’РІРµРґРёС‚Рµ РРјСЏ РґРѕРјР°: ")),
+                ()->object.setYear(this.readInt("Р’РІРµРґРёС‚Рµ РіРѕРґ РїРѕСЃС‚СЂРѕР№РєРё: ")),
+                ()->object.setNumberOfFloors(this.readInt("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌС‚Р°Р¶РµР№ РґРѕРјР°: "))
         );
         return object;
     }
 
 
     /**
-     * Читает Transport из консоли
-     * @return Transport - прочтенный Transport
-     * @throws InvalidInputException если некорректный ввод
+     * Р§РёС‚Р°РµС‚ Transport РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Transport - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ Transport
+     * @throws InvalidInputException РµСЃР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ
      */
     public Transport readTransport() throws InvalidInputException{
         try {
-            System.out.print("Введите Transport (NONE, LITTLE, NORMAL, ENOUGH): ");
+            System.out.print("Р’РІРµРґРёС‚Рµ Transport (NONE, LITTLE, NORMAL, ENOUGH): ");
             return Transport.valueOf(this.readLine().strip().toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new InvalidInputException(e.getMessage());
@@ -112,15 +112,15 @@ public class ConsoleInputManager extends BaseInputManager implements InputManage
 
 
     /**
-     * Читает Flat из консоли
-     * @return Flat - прочтенный Flat
+     * Р§РёС‚Р°РµС‚ Flat РёР· РєРѕРЅСЃРѕР»Рё
+     * @return Flat - РїСЂРѕС‡С‚РµРЅРЅС‹Р№ Flat
      */
     public Flat readFlat() {
         Flat object = new Flat();
-        this.doUntillCorrect(()->object.setName(this.readLine("Введите Имя: ").strip()),
+        this.doUntillCorrect(()->object.setName(this.readLine("Р’РІРµРґРёС‚Рµ РРјСЏ: ").strip()),
                 ()->object.setCoordinates(this.readCoordinates()),
-                ()->object.setArea(this.readInt("Введите площадь: ")),
-                ()->object.setNumberOfRooms(this.readLong("Введите количество комнат: ")),
+                ()->object.setArea(this.readInt("Р’РІРµРґРёС‚Рµ РїР»РѕС‰Р°РґСЊ: ")),
+                ()->object.setNumberOfRooms(this.readLong("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРЅР°С‚: ")),
                 ()->object.setFurnish(this.readFurnish()),
                 ()->object.setView(this.readView()),
                 ()->object.setTransport(this.readTransport()),
@@ -132,8 +132,8 @@ public class ConsoleInputManager extends BaseInputManager implements InputManage
 
 
     /**
-     * Выполняет действие пока не будет введено корректное значение
-     * @param runnable действие
+     * Р’С‹РїРѕР»РЅСЏРµС‚ РґРµР№СЃС‚РІРёРµ РїРѕРєР° РЅРµ Р±СѓРґРµС‚ РІРІРµРґРµРЅРѕ РєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+     * @param runnable РґРµР№СЃС‚РІРёРµ
      */
     public void doUntillCorrect(Runnable runnable){
         while (true){
@@ -141,14 +141,14 @@ public class ConsoleInputManager extends BaseInputManager implements InputManage
                 runnable.run();
                 break;
             }catch (InvalidInputException|IllegalArgumentException e){
-                System.err.println("Некорректный ввод: "+e.getMessage());
+                System.err.println("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ: "+e.getMessage());
             }
         }
     }
 
     /**
-     * Выполняет действия пока не будет введено корректное значение
-     * @param runnables действия
+     * Р’С‹РїРѕР»РЅСЏРµС‚ РґРµР№СЃС‚РІРёСЏ РїРѕРєР° РЅРµ Р±СѓРґРµС‚ РІРІРµРґРµРЅРѕ РєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+     * @param runnables РґРµР№СЃС‚РІРёСЏ
      */
     public void doUntillCorrect(Runnable ... runnables){
         for (Runnable runnable:runnables){
